@@ -1,0 +1,158 @@
+.search-form {
+    position: relative;
+    top: 50px;
+    left: 89%;
+    transform: translate(-50%, -50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+}
+
+input {
+    position: absolute;
+    width: 100%;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+.fa {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+.search-form:hover,
+.search-form:valid {
+    width: 200px;
+    cursor: pointer;
+}
+
+.search-form:hover input,
+.search-form:valid input {
+    display: block;
+}
+
+.search-form:hover .fa,
+.search-form:valid .fa {
+    background: #07051a;
+    color: white;
+}
+
+.search-form:valid a {
+    display: block;
+}
+
+.logo {
+    width: 10%;
+    border-radius: 50%;
+}
+
+.tg-text {
+    position: relative;
+    top: -11px;
+    left: 5px;
+}
+
+.telegram {
+    width: 15%;
+}
+
+.yt-text {
+    position: relative;
+    top: -11px;
+    left: 5px;
+}
+
+.youtube {
+    width: 15%;
+}
+
+.ig-text {
+    position: relative;
+    top: -11px;
+    left: 5px;
+}
+
+.instagram {
+    padding-top: 10px;
+    width: 13%;
+}
+
+@media (max-width: 925px) {
+    .logo {
+        width: 40%;
+    }
+
+    .yt-text {
+        position: relative;
+        top: -5px;
+        left: 110px;
+    }
+
+    .youtube {
+        position: relative;
+        left: 100px;
+        width: 15%;
+    }
+
+    .ig-text {
+        position: relative;
+        top: -10px;
+        left: 5px;
+        left: 220px;
+    }
+
+    .instagram {
+        padding-top: 10px;
+        width: 15%;
+        position: relative;
+        left: 210px;
+    }
+}
+
+@media (max-width: 924px) {
+    .logo {
+        position: relative;
+        display: flexbox;
+        width: 20%;
+        left: 20px;
+    }
+
+    .footer ul li a img {
+        position: static;
+        width: 100%;
+        float: right;
+    }
+
+    #menu-nav {
+        height: 130vh;
+    }
+
+    .footer ul li a span {
+        position: static;
+        top: 20px;
+        font-size: 20px;
+        position: relative;
+        left: -5px;
+    }
+}

@@ -1,0 +1,103 @@
+{% load static %}
+
+{% block content %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XURSAND</title>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/game.css' %}">
+    <link rel="stylesheet" href="{% static 'css/video.css' %}">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
+</head>
+
+<body>
+
+    <style>
+        body {
+            background-image: url("{{ object.image.url }}");
+            background-size: cover;
+        }
+        a {
+            text-decoration: none;
+        }
+        .video-foot {
+            position: relative;
+            float: left;
+            left: 500px;
+        }
+        .main {
+            position: relative;
+            right: 5px;
+        }
+    </style>
+
+    {% if object.video %}
+    <center>
+        <h1 style="font-size: 50px; color: blue; font-family: sans-serif;">{{ object.name }}</h1>
+        <div class="wrapper">
+            <div class="video-player">
+                <video id="video">
+                    <source src="{{ object.video.url }}" type="video/mp4" />
+                </video>
+                <div class="controls">
+                    <button class="play-button control-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <input type="range" min="0" max="100" class="timeline" value="0" />
+                    <button class="sound-button control-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        </svg>
+                    </button>
+                    <button class="control-button fullscreen-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-tilt data-tilt-scale="0.95" data-tilt-startY="40" style="height: 100px;">
+            <div class="year">
+                <span><a href="{{ object.game.url }}" download="{{ object.game.url }}" class="video-foot">Download</a>
+               <a class="main" href="{% url 'main' %}" class="video-foot">Back</a></span>
+            </div>
+        </div>
+    </center>
+
+    {% else %}
+    <div class="card" data-tilt data-tilt-scale="0.95" data-tilt-startY="40">
+        <h1>{{ object.name }}</h1>
+        <div class="year">
+            <center>
+                <span><a href="{{ object.game.url }}" style="position: relative; right: 5px;" download="{{ object.game.url }}">Download</a> 
+                <a href="{% url 'main' %}" style="position: relative; right: 30px;">Back</a></span>
+            </center>
+        </div>
+    </div>
+
+    {% endif %}
+
+    <script src="{% static "js/video.js" %}"></script>
+</body>
+
+</html>
+{% endblock content %}

@@ -1,0 +1,253 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XURSAND</title>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Navigation Bar</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static " css/search.css" %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <style>
+        .search-form {
+            position: relative;
+            top: 50px;
+            left: 89%;
+            transform: translate(-50%, -50%);
+            transition: all 1s;
+            width: 50px;
+            height: 50px;
+            background: white;
+            box-sizing: border-box;
+            border-radius: 25px;
+            border: 4px solid white;
+            padding: 5px;
+        }
+
+        input {
+            position: absolute;
+            width: 100%;
+            height: 42.5px;
+            line-height: 30px;
+            outline: 0;
+            border: 0;
+            display: none;
+            font-size: 1em;
+            border-radius: 20px;
+            padding: 0 20px;
+        }
+
+        .fa {
+            box-sizing: border-box;
+            padding: 10px;
+            width: 42.5px;
+            height: 42.5px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 50%;
+            color: #07051a;
+            text-align: center;
+            font-size: 1.2em;
+            transition: all 1s;
+        }
+
+        .search-form:hover,
+        .search-form:valid {
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .search-form:hover input,
+        .search-form:valid input {
+            display: block;
+        }
+
+        .search-form:hover .fa,
+        .search-form:valid .fa {
+            background: #07051a;
+            color: white;
+        }
+
+        .search-form:valid a {
+            display: block;
+        }
+
+        .logo {
+            width: 10%;
+            border-radius: 50%;
+        }
+
+        .tg-text {
+            position: relative;
+            top: -11px;
+            left: 5px;
+        }
+
+        .telegram {
+            width: 15%;
+        }
+
+        .yt-text {
+            position: relative;
+            top: -11px;
+            left: 5px;
+        }
+
+        .youtube {
+            width: 15%;
+        }
+
+        .ig-text {
+            position: relative;
+            top: -11px;
+            left: 5px;
+        }
+
+        .instagram {
+            padding-top: 10px;
+            width: 13%;
+        }
+
+        @media (max-width: 925px) {
+            .logo {
+                width: 40%;
+            }
+
+            .yt-text {
+                position: relative;
+                top: -5px;
+                left: 110px;
+            }
+
+            .youtube {
+                position: relative;
+                left: 100px;
+                width: 15%;
+            }
+
+            .ig-text {
+                position: relative;
+                top: -10px;
+                left: 5px;
+                left: 220px;
+            }
+
+            .instagram {
+                padding-top: 10px;
+                width: 15%;
+                position: relative;
+                left: 210px;
+            }
+        }
+
+        @media (max-width: 924px) {
+            .logo {
+                position: relative;
+                display: flexbox;
+                width: 20%;
+                left: 20px;
+            }
+
+            .footer ul li a img {
+                position: static;
+                width: 100%;
+                float: right;
+            }
+
+            #menu-nav {
+                height: 130vh;
+            }
+
+            .footer ul li a span {
+                position: static;
+                top: 20px;
+                font-size: 20px;
+                position: relative;
+                left: -5px;
+            }
+        }
+    </style>
+
+    <nav class="navbar navbar-dark bg-dark justify-content-between" style="height: 90px;">
+        <img src="{% static 'images/avatar.png' %}" alt="" width="70" height="70" style="border-radius: 50%;">
+        {% if user.is_authenticated %}
+         <div class="container">
+            <a class="navbar-brand" href="">{{ user.username }}</a>
+
+            <a class="navbar-brand" href="{% url 'password_change' %}" style="position: relative; right: -180px;">Change Password</a>
+            <a class="navbar-brand" href="{% url 'logout' %}" style="position: relative; right: 200px;">Log Out</a>
+        </div>
+        {% else %}
+
+        <div class="container">
+            <a class="navbar-brand" href="">{{ user.username }}</a>
+
+            <a class="navbar-brand" href="{% url 'login' %}" style="position: relative; right: -180px;">Login</a>
+            <a class="navbar-brand" href="{% url 'signup' %}" style="position: relative; right: 200px;">Sign Up</a>
+        </div>
+        
+        {% endif %}
+
+        <div class="container" style="position: relative; top: -85px; left: 70px;">
+            <form method="GET" class="search-form">
+                <input type="search" required name="q">
+                <i class="fa fa-search"></i>
+            </form>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock content %}
+
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <footer class="footer">
+        <div id="menu-nav">
+            <div id="navigation-bar">
+                <center>
+                    <h1 style="color: #fff;">XURSAND PUBGM</h1>
+                    <img src="{% static 'images/logo.jpg' %}" class="logo">
+                </center>
+                <ul>
+                    <li class="tg-li"><a href="#"><img src="{% static 'images/telegram.png' %}" class="telegram"><span
+                                class="tg-text">Telegram</span></a></li>
+
+                    <li class="yt-li"><a href="#"><img src="{% static 'images/youtube.png' %}" class="youtube"><span
+                                class="yt-text">YouTube</span></a></li>
+
+                    <li class="ig-li"><a href="#"><img src="{% static 'images/instagram.png' %}" class="instagram"><span
+                                class="ig-text">Instagram</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="{% static " js/search.js" %}"></script>
+</body>
+
+</html>
